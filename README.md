@@ -1,7 +1,7 @@
 # Project Structure:
 phonebook/   
 ├── src/  
-│   ├── main/  
+│     ├── main/  
 │   │   ├── java/   
 │   │   │   └── com/harryitpro/phonebook/    
 │   │   │       ├── PhonebookApplication.java  (Main class)    

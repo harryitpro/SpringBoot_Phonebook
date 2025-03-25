@@ -1,6 +1,8 @@
 package com.harryitpro.phonebook.controller;
 
 import com.harryitpro.phonebook.model.Contact;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/contacts")
 public class ContactController {
-
+    private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
     // In-memory storage
     private final List<Contact> contacts = new ArrayList<>();
 
@@ -20,12 +22,22 @@ public class ContactController {
         // Pre-populate with sample data
         contacts.add(new Contact(1L, "Alice", "123-456-7890"));
         contacts.add(new Contact(2L, "Bob", "098-765-4321"));
+        contacts.add(new Contact(3L, "Frank", "555-123-4567"));
+        contacts.add(new Contact(4L, "Grace", "555-987-6543"));
+        contacts.add(new Contact(5L, "Judy", "555-111-2222"));
     }
 
     // GET all contacts
     @GetMapping
-    public ResponseEntity<List<Contact>> getAllContacts() {
-        return ResponseEntity.ok(contacts);
+    public ResponseEntity<List<Contact>> getAllContacts(
+            @RequestParam(required = false, defaultValue = "2") String limit) {
+        int size = Integer.MAX_VALUE;
+        try {
+            size = Integer.parseInt(limit);
+        } catch (NumberFormatException ex) {
+            logger.error("Illegal argument of limit parameter: " + ex);
+        }
+        return ResponseEntity.ok(contacts.subList(0, Math.min(size, contacts.size())));
     }
 
     // GET a contact by ID
