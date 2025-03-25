@@ -4,10 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.harryitpro.spring</groupId>
+    <groupId>com.harryitpro.springboot</groupId>
     <artifactId>Phonebook</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Phonebook simple demo webapp</name>
+    <packaging>jar</packaging> <!-- Ensure packaging is set to 'jar' -->
+    <name>springboot-phonebook</name>
     <description>Phonebook simple demo webapp</description>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -23,6 +24,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
     <build>
