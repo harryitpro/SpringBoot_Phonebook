@@ -55,7 +55,8 @@ public class ContactController {
     public ResponseEntity<Contact> addContact(@RequestBody Contact contact) {
         contact.setId((long) (contacts.size() + 1)); // Simple ID generation
         contacts.add(contact);
-        return new ResponseEntity<>(contact, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(contact);
     }
 
     // PUT to update a contact
