@@ -4,41 +4,27 @@ package com.harryitpro.phonebook.model;
  * POJO
  * Represents a phonebook contact:
  */
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Data;
+
+@Entity
+@Data
 public class Contact {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Name cannot be null")
     private String name;
+
+    @NotNull(message = "Phone number cannot be null")
+    @Pattern(regexp = "\\d{3}-\\d{3}-\\d{4}", message = "Phone number must be in format XXX-XXX-XXXX")
     private String phoneNumber;
 
-    public Contact() {}
-
-    public Contact(Long id, String name, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    private String email;
 }
