@@ -5,10 +5,16 @@ phonebook/
 │   │   ├── java/   
 │   │   │   └── com/harryitpro/phonebook/    
 │   │   │       ├── PhonebookApplication.java  (Main class)    
+│   │   │       └── controller/   
+│   │   │           └── ContactController.java (REST Controller)    
+│   │   │       └── exception/   
+│   │   │           └── GlobalExceptionHandler.java (Controller Advice)    
 │   │   │       ├── model/   
 │   │   │       │   └── Contact.java          (POJO)    
-│   │   │       └── controller/   
-│   │   │           └── PhonebookController.java (REST Controller)    
+│   │   │       └── repository/   
+│   │   │           └── ContactRepository.java (JPA Repository)    
+│   │   │       └── service/   
+│   │   │           └── ContactService.java (Service component)    
 │   │   └── resources/    
 │   │       └── application.properties        (Configuration)  
 │   └── test/                                 (Tests, ignored here)  
