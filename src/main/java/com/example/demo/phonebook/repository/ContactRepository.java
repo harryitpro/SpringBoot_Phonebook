@@ -1,6 +1,6 @@
-package com.harryitpro.phonebook.repository;
+package com.example.demo.phonebook.repository;
 
-import com.harryitpro.phonebook.model.Contact;
+import com.example.demo.phonebook.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

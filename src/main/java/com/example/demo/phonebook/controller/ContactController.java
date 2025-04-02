@@ -1,15 +1,15 @@
-package com.harryitpro.phonebook.controller;
+package com.example.demo.phonebook.controller;
 
-import com.harryitpro.phonebook.model.Contact;
-import com.harryitpro.phonebook.service.ContactService;
+import com.example.demo.phonebook.model.Contact;
+import com.example.demo.phonebook.service.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +17,11 @@ import java.util.Optional;
 @RequestMapping("/api/phonebook")
 public class ContactController {
     private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
+    private final ContactService contactService;
 
-    @Autowired
-    private ContactService contactService;
+    public ContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
 
     @PostMapping
     public ResponseEntity<Contact> createContact(@Valid @RequestBody Contact contact) {

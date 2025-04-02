@@ -1,4 +1,4 @@
-package com.harryitpro.phonebook;
+package com.example.demo.phonebook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

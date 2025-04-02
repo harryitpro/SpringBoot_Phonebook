@@ -1,4 +1,4 @@
-package com.harryitpro.phonebook.exception;
+package com.example.demo.phonebook.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

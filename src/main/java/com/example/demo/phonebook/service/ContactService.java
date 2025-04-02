@@ -1,8 +1,7 @@
-package com.harryitpro.phonebook.service;
+package com.example.demo.phonebook.service;
 
-import com.harryitpro.phonebook.model.Contact;
-import com.harryitpro.phonebook.repository.ContactRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.phonebook.model.Contact;
+import com.example.demo.phonebook.repository.ContactRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.Optional;
 
 @Service
 public class ContactService {
-    @Autowired
-    private ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
+
+    public ContactService(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
     public Contact saveContact(Contact contact) {
         return contactRepository.save(contact);

@@ -1,4 +1,4 @@
-package com.harryitpro.phonebook.model;
+package com.example.demo.phonebook.model;
 
 /**
  * POJO
