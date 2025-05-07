@@ -39,10 +39,6 @@ class LoggingAspectTest {
     void setUp() {
         // Redirect System.out to capture logs
         System.setOut(new PrintStream(outContent));
-        // Mock the method signature
-        when(joinPoint.getSignature()).thenReturn(methodSignature);
-        when(proceedingJoinPoint.getSignature()).thenReturn(methodSignature);
-        when(methodSignature.getName()).thenReturn("testMethod");
     }
 
     @AfterEach
@@ -55,6 +51,8 @@ class LoggingAspectTest {
     @Test
     void logBefore_ShouldLogMethodEntry_WithValidArguments() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Object[] args = new Object[]{"arg1", 123};
         when(joinPoint.getArgs()).thenReturn(args);
 
@@ -69,6 +67,8 @@ class LoggingAspectTest {
     @Test
     void logBefore_ShouldLogMethodEntry_WithNullArguments() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Object[] args = new Object[]{null, null};
         when(joinPoint.getArgs()).thenReturn(args);
 
@@ -83,6 +83,8 @@ class LoggingAspectTest {
     @Test
     void logAfterReturning_ShouldLogMethodExit_WithNonNullResult() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Object result = "successResult";
 
         // Act
@@ -96,6 +98,8 @@ class LoggingAspectTest {
     @Test
     void logAfterReturning_ShouldLogMethodExit_WithNullResult() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Object result = null;
 
         // Act
@@ -109,6 +113,8 @@ class LoggingAspectTest {
     @Test
     void logAfterThrowing_ShouldLogExceptionMessage_WithRuntimeException() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Throwable exception = new RuntimeException("Test runtime exception");
 
         // Act
@@ -122,6 +128,8 @@ class LoggingAspectTest {
     @Test
     void logAfterThrowing_ShouldLogExceptionMessage_WithNullMessage() {
         // Arrange
+        when(joinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Throwable exception = new RuntimeException();
 
         // Act
@@ -135,6 +143,8 @@ class LoggingAspectTest {
     @Test
     void logAround_ShouldLogExecutionTimeAndReturnResult_WhenMethodSucceeds() throws Throwable {
         // Arrange
+        when(proceedingJoinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Object result = "methodResult";
         when(proceedingJoinPoint.proceed()).thenReturn(result);
 
@@ -152,6 +162,8 @@ class LoggingAspectTest {
     @Test
     void logAround_ShouldLogFailureTimeAndThrowException_WhenMethodThrowsRuntimeException() throws Throwable {
         // Arrange
+        when(proceedingJoinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Throwable exception = new RuntimeException("Test runtime exception");
         when(proceedingJoinPoint.proceed()).thenThrow(exception);
 
@@ -169,6 +181,8 @@ class LoggingAspectTest {
     @Test
     void logAround_ShouldLogFailureTimeAndThrowException_WhenMethodThrowsCheckedException() throws Throwable {
         // Arrange
+        when(proceedingJoinPoint.getSignature()).thenReturn(methodSignature);
+        when(methodSignature.getName()).thenReturn("testMethod");
         Throwable exception = new Exception("Test checked exception");
         when(proceedingJoinPoint.proceed()).thenThrow(exception);
 
